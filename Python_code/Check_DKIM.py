@@ -1,11 +1,20 @@
 import dns.resolver
 
-DOMAIN_NAME = "wsj.com"
-DOMAIN_NAME = "vg.no"
-
-
+'''
+NB!!!
+ The functionality in this file is borrowed from the "My Email Communications Security Assessment (MECSA) Stand alone Tool"
+ By Kambourakis, Draper and Sanches - available from the following github repository: https://github.com/mecsa/mecsa-st 
+'''
 
 def check_dkim(domain):
+    '''
+            Given a domain, query the DNS server for _domainkey.<domain>
+            if the server does not support DKIM, the answer should be NXDOMAIN
+            :param domain: Domain name tested
+            :return: (boolean, String[])
+                      domain has DKIM record? True:False
+                      answer sent from the domain Server
+            '''
     try:
         resolver = dns.resolver.Resolver()
         resolver.resolve('_domainkey.' + domain, 'TXT')
@@ -26,11 +35,7 @@ def check_dkim(domain):
     return has_dkim, dkim_error
 
 
-def main():
-    pass
 
 
 
-dkimcheck = check_dkim(DOMAIN_NAME)
 
-print(DOMAIN_NAME + ": ", dkimcheck)
