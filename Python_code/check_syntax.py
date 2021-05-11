@@ -1,4 +1,4 @@
-from Python_code import spf
+import spf
 import re
 
 '''
