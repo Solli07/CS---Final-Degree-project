@@ -90,8 +90,8 @@ def count_spf_dkim_dmarc(dns_replies):
             pass
         try:
             if i[2][0] is True:
-                #print(count_dkim)
-                print(i[1]," :::: ",i[2])
+                #print(count_dkim) 
+                #print(i[1]," :::: ",i[2])
                 count_dkim += 1
                 #print(count_dkim, "\n")
         except TypeError:
